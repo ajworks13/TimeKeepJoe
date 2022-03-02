@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+*{
+  font-family: 'Pacifico', cursive;
+}
+body{
+  height:800px;
+  background-image:linear-gradient(black 20%,purple);
+  
+  
+}
+.mainContainer{
+  display:flex;
+  margin:0 auto;
+  background:red;
+  width:75%;
+  height:300px;
+  border-radius:10px;
+  
+  .watch{
+    display:flex;
+    flex-wrap:wrap;
+    width:50%;
+    height:300px;
+    font-size:100px;
+    text-align:center;
+    background-image: linear-gradient(to bottom right, black, #9ADCFF);
+    
+    
+    .theNumbers{
+      margin-top:10px;
+      width:100%;
+      color:white;
+      border-left:solid;
+      border-left-color:#9ADCFF;
+    }
+    .theReps{
+      height:100px;
+      width:50%;
+      background:#9ADCFF;
+      font-size:35px;
+    }
+    .theSets{
+      @extend .theReps;
+      background:#4B778D;
+      width:40%;
+      margin-left:10px;
+      border:3px solid black;
+      box-shadow:7px 1px 1px 0px;
+      
+    }
+  }
+  
+//   .theSetWindow{
+    
+//     position:absolute;
+//     text-align:center;
+//     z-index:2;
+//     left:0;
+//     right:0;
+//     margin-left:auto;
+//     margin-right:auto;
+//     top:50px;
+//     height:100px;
+//     width:300px;
+//     background:cyan;
+    
+    
+//   }
+  
+  .btnArea{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    height:300px;
+    width:50%;
+    background-image: linear-gradient(to bottom left, black, #9ADCFF);
+    border-right:solid;
+    border-right-color:#9ADCFF;
+    font-size:40px;
+    
+    .start{
+      width:70%;
+      font-size:30px;
+      margin-top:5px;
+      height:100px;
+      background:#9EDE73;
+      text-shadow: 0px 0px 15px #9ADCFF;
+      color:black;
+    }
+    .set{
+      @extend .start;
+      height:50px;
+      border:1px solid #9ADCFF;
+      background:black;
+      color:#9ADCFF;
+    }
+    .pause{
+      @extend .start;
+      height:50px;
+      border:1px solid #9ADCFF;
+      background:black;
+      color:#9ADCFF;
+    }
+    .startOver{
+      @extend .start;
+      height:50px;
+      border:1px solid #9ADCFF;
+      background:black;
+      color:#9ADCFF;
+    }
+  }
+  
+}
+
+
+ // MOBILE VERSION =================================================================
+@media only screen and (max-width: 480px) {
+  *{
+  font-family: 'Pacifico', cursive;
+  }
+  body{
+    height:800px;
+    background-image:linear-gradient(black 20%, blue);
+
+
+  }
+  .mainContainer{
+    display:flex;
+    flex-direction:column;
+    margin:0 auto;
+    background:red;
+    width:75%;
+    height:600px;
+    //border-radius:10px;
+
+    .watch{
+      display:flex;
+      flex-wrap:wrap;
+      flex-direction:row;
+      width:100%;
+      height:600px;
+      font-size:100px;
+      text-align:center;
+      border-top:none;
+      border-right:solid;
+      border-bottom:none;
+      border-left:solid;
+      border-left-color:#9ADCFF;
+      background-image: linear-gradient(to bottom right, black, #9ADCFF);
+
+
+      .theNumbers{
+        margin-top:10px;
+        width:100%;
+        color:white;
+        border-left:none;
+      }
+      .theReps{
+        height:100px;
+        width:50%;
+        background:#9ADCFF;
+        font-size:35px;
+      }
+      .theSets{
+        @extend .theReps;
+        display:flex;
+        flex-direction:column;
+        background:#4B778D;
+        width:40%;
+        margin-left:10px;
+        border:3px solid black;
+        box-shadow:0px 0px 5px 0px;
+        
+      }
+    }
+
+  
+
+    .btnArea{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      height:600px;
+      width:100%;
+      background-image: linear-gradient(to top right, black, #9ADCFF);
+      // border-right:solid;
+      // border-right-color:yellow;
+      border-top:none;
+      border-right:solid;
+      border-bottom:solid;
+      border-left:solid;
+      border-left-color:#9ADCFF;
+      font-size:40px;
+
+      .start{
+        width:70%;
+        font-size:30px;
+        margin-top:5px;
+        height:100px;
+        background:#9EDE73;
+        text-shadow: 0px 0px 15px #9ADCFF;
+        color:black;
+      }
+      .set{
+        @extend .start;
+        height:50px;
+        border:1px solid #9ADCFF;
+        background:black;
+        color:#9ADCFF;
+      }
+      .pause{
+        @extend .start;
+        height:50px;
+        border:1px solid #9ADCFF;
+        background:black;
+        color:#9ADCFF;
+      }
+      .startOver{
+        @extend .start;
+        height:50px;
+        border:1px solid #9ADCFF;
+        background:black;
+        color:#9ADCFF;
+      }
+    }
+
+  }
+}
