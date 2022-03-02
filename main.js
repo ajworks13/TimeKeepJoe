@@ -8,11 +8,15 @@ NOTES:
   [c] Add fonts.
   [c] Improve Design into 2.0.
   [c] change its color or fade when countdown begins.
+  turn reps into a button to prompt if you want to reset reps only.
+  when clicking on sets, add another question to see id the user wants to reset reps per sets.
+  add a settings menu > within so far add the ability to change between light and dark mode
+  
   
 */
 
 let theMinutes: number = 0
-let theSeconds: number = 30;
+let theSeconds: number = 3;
 let reps: number = 0;
 let sets: number = 0;
 
@@ -34,25 +38,25 @@ theBlur.style.backgroundColor = "black";
 document.body.appendChild(theBlur);
 
 // the div pop up for the user to input reps per set.
-let setDiv = document.createElement("div");
-setDiv.style.position = "absolute";
-setDiv.style.display = "none";
-setDiv.style.left = "0";
-setDiv.style.right = "0";
-setDiv.style.marginLeft = "auto";
-setDiv.style.marginRight = "auto";
-setDiv.style.top = "50px";
-setDiv.style.height = "100px";
-setDiv.style.width = "300px";
-setDiv.style.backgroundColor = "brown";
-setDiv.style.zIndex = "3";
-setDiv.style.fontSize = "20px";
-setDiv.style.fontWeight = "bold";
-setDiv.style.textAlign = "center";
-setDiv.style.paddingTop = "5px";
-setDiv.innerHTML = "How many Reps per Sets?";
+// let setDiv = document.createElement("div");
+// setDiv.style.position = "absolute";
+// setDiv.style.display = "none";
+// setDiv.style.left = "0";
+// setDiv.style.right = "0";
+// setDiv.style.marginLeft = "auto";
+// setDiv.style.marginRight = "auto";
+// setDiv.style.top = "50px";
+// setDiv.style.height = "100px";
+// setDiv.style.width = "300px";
+// setDiv.style.backgroundColor = "brown";
+// setDiv.style.zIndex = "3";
+// setDiv.style.fontSize = "20px";
+// setDiv.style.fontWeight = "bold";
+// setDiv.style.textAlign = "center";
+// setDiv.style.paddingTop = "5px";
+// setDiv.innerHTML = "How many Reps per Sets?";
 
-document.getElementById("theSetWindowID").appendChild(setDiv);
+// document.getElementById("theSetWindowID").appendChild(setDiv);
 
 let userInput = document.createElement("input");
 userInput.setAttribute('type','text');
@@ -67,7 +71,7 @@ userInput.style.fontSize = "20px";
 userInput.style.color = "white";
 userInput.style.backgroundColor = "#4e0000";
 
-setDiv.appendChild(userInput);
+//setDiv.appendChild(userInput);
 
 // this displays the min and secs
 let theNumbers = document.querySelector(".theNumbers").innerHTML = `${theMinutes}:${theSeconds}`;
@@ -83,19 +87,65 @@ let pauseID = document.getElementById("pauseID")
 // immitiately disables the pause button while counter is not active.
 pauseID.disabled = true;
 
+//pops up the sets prompt.
+let setsPopUp = document.querySelector(".setsPopUp");
+let setInput = document.querySelector(".setInput");
+let setTheReps = document.querySelector(".setTheReps");
+let theValue, intValue;
+
 // When the Sets button is clicked, this triggers
 let theSetsID = document.getElementById("theSetsID").onclick = function(){
-  console.log("yo");
-  setDiv.style.display = "block";
+  //setDiv.style.display = "block";
+  setsPopUp.style.display = "block";
   theBlur.style.display = "block";
+  // LEFT OFF HERE. make it so that the inputs value gets added once set rep is clicked.
+  setInput.addEventListener('change', (e) => {  
+    console.log(e.target.value);
+    theValue = e.target.value;
+    intValue = parseInt(theValue);
+  });
+  
+  setTheReps.onclick = function(){
+    console.log("Here is: " , intValue);
+  }
   
   // removes the pop up and background blur
   theBlur.onclick = function(){
     theBlur.style.display = "none";
-    setDiv.style.display = "none";
+    setsPopUp.style.display = "none";
+   // setDiv.style.display = "none";
   }
 }
 
+let repsQuestion = document.querySelector(".repsQuestion");
+let yes = document.querySelector(".yes");
+let no = document.querySelector(".no");
+// pops up question for reps.
+let repsClick = document.querySelector(".repsClick").onclick = function(){
+  repsQuestion.style.display = 'block';
+  theBlur.style.display = "block";
+  
+  // resets reps down to 0
+  yes.onclick = function(){
+    reps = 0;
+    theReps = document.querySelector(".theReps").innerHTML = `Reps: ${reps}`;
+    repsQuestion.style.display = "none";
+    theBlur.style.display = "none";
+    setDiv.style.display = "none";
+  }
+  no.onclick = function(){
+    repsQuestion.style.display = "none";
+    theBlur.style.display = "none";
+    setDiv.style.display = "none";
+  }
+  
+  // removes the pop up and background blur
+  theBlur.onclick = function(){
+    repsQuestion.style.display = "none";
+    theBlur.style.display = "none";
+    setDiv.style.display = "none";
+  }
+}
 
 // start BUTTTON
 let start = document.querySelector(".start").onclick = function(){
@@ -115,6 +165,7 @@ let start = document.querySelector(".start").onclick = function(){
       startID.style.backgroundColor = "#9EDE73";
       setID.style.backgroundColor = "black";
   }// startOver onclick end
+  
   
   // makes it so that you can pause during the countdown ONLY.
   pauseID.disabled = false;
@@ -151,7 +202,7 @@ let start = document.querySelector(".start").onclick = function(){
     if(theSeconds <= 0){
       reps += 1;
       console.log(reps);
-      theSeconds += 31;
+      theSeconds += 2;
       document.querySelector(".theReps").innerHTML = `Reps: ${reps}`;
       
       var a = setInterval(function(){
@@ -168,6 +219,13 @@ let start = document.querySelector(".start").onclick = function(){
         
       },1000); // a interval END
       
+    }
+    // LEFT OFF HERE. Figure out why sets is not changing.
+    if(reps == intValue){
+      reps = 0;
+      sets+=1;
+
+      console.log("going through");
     }
   },1000); // starter interval END
   
