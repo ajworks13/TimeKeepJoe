@@ -91,6 +91,7 @@ pauseID.disabled = true;
 let setsPopUp = document.querySelector(".setsPopUp");
 let setInput = document.querySelector(".setInput");
 let setTheReps = document.querySelector(".setTheReps");
+let resetSet = document.querySelector(".resetSet");
 let theValue, intValue;
 
 // When the Sets button is clicked, this triggers
@@ -98,11 +99,26 @@ let theSetsID = document.getElementById("theSetsID").onclick = function(){
   //setDiv.style.display = "block";
   setsPopUp.style.display = "block";
   theBlur.style.display = "block";
-  // LEFT OFF HERE. make it so that the inputs value gets added once set rep is clicked.
+  
+  resetSet.onclick = function(){
+    intValue = 0;
+    sets = 0;
+    setInput.value = 0;
+    theSets = document.querySelector(".theSets").innerHTML = `Sets: ${sets}`;
+    setsPopUp.style.display = "none";
+    theBlur.style.display = "none";
+    console.log("This value is: ",intValue)
+  }
+  
   setInput.addEventListener('change', (e) => {  
     console.log(e.target.value);
     theValue = e.target.value;
     intValue = parseInt(theValue);
+    //resets reps after a nuber of reps per set is added.
+    reps = 0;
+    theReps = document.querySelector(".theReps").innerHTML = `Reps: ${reps}`;
+    setsPopUp.style.display = "none";
+    theBlur.style.display = "none";
   });
   
   setTheReps.onclick = function(){
@@ -131,19 +147,19 @@ let repsClick = document.querySelector(".repsClick").onclick = function(){
     theReps = document.querySelector(".theReps").innerHTML = `Reps: ${reps}`;
     repsQuestion.style.display = "none";
     theBlur.style.display = "none";
-    setDiv.style.display = "none";
+    //setDiv.style.display = "none";
   }
   no.onclick = function(){
     repsQuestion.style.display = "none";
     theBlur.style.display = "none";
-    setDiv.style.display = "none";
+   // setDiv.style.display = "none";
   }
   
   // removes the pop up and background blur
   theBlur.onclick = function(){
     repsQuestion.style.display = "none";
     theBlur.style.display = "none";
-    setDiv.style.display = "none";
+    //setDiv.style.display = "none";
   }
 }
 
@@ -220,12 +236,13 @@ let start = document.querySelector(".start").onclick = function(){
       },1000); // a interval END
       
     }
-    // LEFT OFF HERE. Figure out why sets is not changing.
+    
+    // Configures the reps and setps
     if(reps == intValue){
       reps = 0;
       sets+=1;
-
-      console.log("going through");
+      theSets = document.querySelector(".theSets").innerHTML = `Sets: ${sets}`;
+      theReps = document.querySelector(".theReps").innerHTML = `Reps: ${reps}`;
     }
   },1000); // starter interval END
   
