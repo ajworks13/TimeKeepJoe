@@ -13,7 +13,9 @@ NOTES:
   add a settings menu > within so far add the ability to change between light and dark mode.
   [c] Disable reps and sets button when counting.
   
-  
+  BUGS:
+    So far this one bug remains. It isn't so common to run into. If the user sets a number of reps, starts over, 
+    and clear sets in that exact combination, the set number will count instead of reps. Either restart or clear set to fix.
 */
 
 let theMinutes: number = 0
@@ -227,11 +229,11 @@ let startOver = document.querySelector(".startOver").onclick = function(){
   theSeconds = 6;
   theNumbers = document.querySelector(".theNumbers").innerHTML = `${theMinutes}:${theSeconds}`;
   blockRepsAndSets.style.display = "none";
-  intValue = 0;
-  sets = 0;
-  //reps = 0;
-  setInput.value = 0;
-  theSets = document.querySelector(".theSets").innerHTML = `Sets: ${sets}`;
+  // intValue = 0;
+  // sets = 0;
+  // //reps = 0;
+  // setInput.value = 0;
+  // theSets = document.querySelector(".theSets").innerHTML = `Sets: ${sets}`;
   //theReps = document.querySelector(".theReps").innerHTML = `Reps: ${reps}`;
   clearInterval(starter);
   clearInterval(a);
