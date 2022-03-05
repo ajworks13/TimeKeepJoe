@@ -6,14 +6,30 @@
     <div class="mainContainer">
       <div class="watch">
         <div class="theNumbers"></div>
-        <div class="theReps"></div>
+        <div class="theReps repsClick repStyle"></div>
+        <div class="blockRepsAndSets"></div>
+        <div class="repsQuestion">
+          <p>Do you want to reset your reps?</p>
+          <button class="yes">Yes</button>
+          <button class="no">No</button>
+        </div>
         <div class="theSets" id="theSetsID">
           <div class="line"></div>
         </div>
+        <div class="setsPopUp">
+          <p>How many REPS per SET?</p>
+          <input type="text" class="setInput" value="">
+          <button class="setTheReps">Set Reps</button>
+          <button class="resetSet">Clear Set</button>
+        </div>
+       
       </div>
       
       <div class="theSetWindow" id="theSetWindowID">
-<!--         <input type="text" class="myCustomSet"> -->
+        <p>Set your timer below:</p>
+        <input type="text" value="" class="timerInput" placeholder="0:00">
+        <button class="setClock">Set Clock</button>
+        <button class="cancel">Cancel</button>
       </div>
       
       <div class="btnArea">
