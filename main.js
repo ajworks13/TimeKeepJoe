@@ -13,9 +13,7 @@ NOTES:
   add a settings menu > within so far add the ability to change between light and dark mode.
   [c] Disable reps and sets button when counting.
   
-  BUGS:
-    So far this one bug remains. It isn't so common to run into. If the user sets a number of reps, starts over, 
-    and clear sets in that exact combination, the set number will count instead of reps. Either restart or clear set to fix.
+  
 */
 
 let theMinutes: number = 0
@@ -248,8 +246,30 @@ let startOver = document.querySelector(".startOver").onclick = function(){
   setID.style.backgroundColor = "black";
 }// startOver onclick end
 
+
+let theSetWindow = document.querySelector(".theSetWindow");
 // set time BUTTON
 let setTimer = document.querySelector(".set").onclick = function(){
+  theSetWindow.style.display = "block";
+  theBlur.style.display = "block";
+  
+  let cancel = document.querySelector(".cancel");
+  let timerInput = document.querySelector(".timerInput");
+  let theTimerValue, intTimerValue;
+  cancel.onclick = function(){
+    theSetWindow.style.display = "none";
+    theBlur.style.display = "none";
+  }
+  
+  timerInput.addEventListener('change', (e) => {  
+    console.log(e.target.value);
+    theTimerValue = e.target.value;
+    intTimerValue = parseInt(theTimerValue);
+    console.log("this is timer value:", intTimerValue);
+    
+  });
+  
+  // theNumbers
   
 }
 
