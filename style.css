@@ -223,7 +223,28 @@ body{
       }
     }
 
-  
+    .theSetWindow{
+      position:absolute;
+      display:none;
+      z-index:5;
+      height:150px;
+      width:70%;
+      left:0;
+      right:0;
+      margin-right:auto;
+      margin-left:auto;
+      margin-top:150px;
+      background:white;
+      text-align:center;
+      
+      input{
+        text-align:center;
+        width:75%;
+      }
+      button{
+        margin-top:10px;
+      }
+    }
 
     .btnArea{
       display:flex;
