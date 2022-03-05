@@ -166,8 +166,10 @@ let start = document.querySelector(".start").onclick = function(){
       setID.disabled = true;
       startID.style.backgroundColor = "gray";
       setID.style.backgroundColor = "gray";
-      console.log("Count from reps and sets", reps, sets); // LEFFT OFF HERE.
+      
       theSeconds--;
+      
+      
       document.querySelector(".theNumbers").innerHTML = `${theMinutes}:${theSeconds}`;
     }
    
@@ -254,22 +256,40 @@ let setTimer = document.querySelector(".set").onclick = function(){
   theBlur.style.display = "block";
   
   let cancel = document.querySelector(".cancel");
-  let timerInput = document.querySelector(".timerInput");
-  let theTimerValue, intTimerValue;
+  let timerMinInput = document.querySelector(".timerMinInput");
+  let timerSecInput = document.querySelector(".timerSecInput");
+  let setClock = document.querySelector(".setClock");
+  let theTimerMinValue, theTimerSecValue, intTimerMinValue, intTimerSecValue;
   cancel.onclick = function(){
     theSetWindow.style.display = "none";
     theBlur.style.display = "none";
   }
   
-  timerInput.addEventListener('change', (e) => {  
+  timerMinInput.addEventListener('change', (e) => {  
     console.log(e.target.value);
-    theTimerValue = e.target.value;
-    intTimerValue = parseInt(theTimerValue);
-    console.log("this is timer value:", intTimerValue);
+    timerMinInput = e.target.value;
+    intTimerMinValue = parseInt(timerMinInput);
+    console.log("this is timer value:", intTimerMinValue);
+    theMinutes = intTimerMinValue;
+  });
+  
+  timerSecInput.addEventListener('change', (e) => {  
+    console.log(e.target.value);
+    timerSecInput = e.target.value;
+    intTimerSecValue = parseInt(timerSecInput);
+    console.log("this is timer value:", intTimerSecValue);
+    theSeconds = intTimerSecValue;
     
   });
   
+  
   // theNumbers
+  setClock.onclick = function(){
+    theNumbers = document.querySelector(".theNumbers").innerHTML = `${theMinutes}:${theSeconds}`;
+    console.log(theMinutes, theSeconds);
+    theSetWindow.style.display = "none";
+    theBlur.style.display = "none";
+  }
   
 }
 
