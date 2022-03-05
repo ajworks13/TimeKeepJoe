@@ -168,7 +168,7 @@ body{
         position:absolute;
         display:none;
         z-index:4;
-        top:190px;
+        top:130px;
         width:78%;
         height:115px;
         opacity:.5;
@@ -239,10 +239,13 @@ body{
       
       input{
         text-align:center;
-        width:75%;
+        width:10%;
       }
       button{
         margin-top:10px;
+      }
+      .cancel{
+        margin-left:20px;
       }
     }
 
