@@ -82,10 +82,14 @@ let theSetsID = document.getElementById("theSetsID").onclick = function(){
   theBlur.style.display = "block";
   
   resetSet.onclick = function(){
-    intValue = 0;
+    intValue = -1;
+    // this fixed the bug where sets will start counting instead of reps after resetting reps and sets.
+    theValue = "-1";
     sets = 0;
     reps = 0;
     setInput.value = 0;
+    console.log("reps from reset: ", reps);
+    console.log("sets from reset: ", sets);
     theSets = document.querySelector(".theSets").innerHTML = `Sets: ${sets}`;
     theReps = document.querySelector(".theReps").innerHTML = `Reps: ${reps}`;
     setsPopUp.style.display = "none";
@@ -166,9 +170,10 @@ let start = document.querySelector(".start").onclick = function(){
       setID.disabled = true;
       startID.style.backgroundColor = "gray";
       setID.style.backgroundColor = "gray";
-      
       theSeconds--;
       
+      
+      // LEFT OFF HERE trying to figure out how to make the minutes and seconds count down together.
       
       document.querySelector(".theNumbers").innerHTML = `${theMinutes}:${theSeconds}`;
     }
@@ -187,15 +192,17 @@ let start = document.querySelector(".start").onclick = function(){
       isPaused = false;
       pauseBTN.innerHTML = "Pause";
     }
-    if(theSeconds <= 0){
+    if(theSeconds <= 0 ){
       reps += 1;
-      console.log(reps);
-      
-      theSeconds += 2;
+      console.log("reps: ", reps);
+      console.log("sets: ", sets);
+      theSeconds += 5;
       document.querySelector(".theReps").innerHTML = `Reps: ${reps}`;
       
+      
       a = setInterval(function(){
-        clearInterval(starter);
+        
+        
         blockRepsAndSets.style.display = "none";
         // enables the button again after count renews
         startID.disabled = false;
@@ -204,6 +211,7 @@ let start = document.querySelector(".start").onclick = function(){
         pauseID.disabled = true;
         startID.style.backgroundColor = "#9EDE73";
         setID.style.backgroundColor = "black";
+        clearInterval(starter);
         clearInterval(a);
         
       },1000); // a interval END
@@ -213,7 +221,7 @@ let start = document.querySelector(".start").onclick = function(){
     // bug is here
     // ########## If i set reps, click on start over, and clear sets..sets starts to count instead of reps.
     // Configures the reps and setps
-    if(reps == intValue){
+    if(reps == theValue){
       reps = 0;
       sets+=1;
       theSets = document.querySelector(".theSets").innerHTML = `Sets: ${sets}`;
