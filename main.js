@@ -155,7 +155,8 @@ let start = document.querySelector(".start").onclick = function(){
   //displays when count down is activated to disable Reps and Sets from being clicked on.
   blockRepsAndSets = document.querySelector(".blockRepsAndSets");
   blockRepsAndSets.style.display = "block";
-  
+  startID.disabled = true;
+  setID.disabled = true;
  
   // makes it so that you can pause during the countdown ONLY.
   pauseID.disabled = false;
