@@ -12,6 +12,7 @@ NOTES:
   [c] when clicking on sets, add another question to see id the user wants to reset reps per sets.
   add a settings menu > within so far add the ability to change between light and dark mode.
   [c] Disable reps and sets button when counting.
+  When set timer is open, click outside disables blur but pop up wont go away/
   
   
 */
@@ -165,15 +166,22 @@ let start = document.querySelector(".start").onclick = function(){
   
   
   starter = setInterval(function(){
-   
+    
+    
     if(!isPaused){
+      
       startID.disabled = true;
       setID.disabled = true;
       startID.style.backgroundColor = "gray";
       setID.style.backgroundColor = "gray";
       theSeconds--;
       
-      
+      if(theSeconds == 0 && theMinutes >= 1){
+        console.log("heiorhiworhie");
+        theSeconds = 59;
+        theMinutes -= 1;
+        theSeconds--;
+      }
       // LEFT OFF HERE trying to figure out how to make the minutes and seconds count down together.
       
       document.querySelector(".theNumbers").innerHTML = `${theMinutes}:${theSeconds}`;
@@ -219,9 +227,7 @@ let start = document.querySelector(".start").onclick = function(){
       
     }
     
-    // bug is here
-    // ########## If i set reps, click on start over, and clear sets..sets starts to count instead of reps.
-    // Configures the reps and setps
+    // Configures the reps and setps. Purposfully comparing int reps and string theValue.
     if(reps == theValue){
       reps = 0;
       sets+=1;
