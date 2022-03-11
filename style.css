@@ -184,12 +184,16 @@ body{
         font-size:20px;
         margin-left:auto;
         margin-right:auto;
-        height:130px;
+        height:190px;
         width:70%;
-        background:blue;
+        background-image: linear-gradient(#9ADCFF, black);
+        border-left:solid;
+        border-bottom:solid;
+        border-color:#9ADCFF;
+        border-left-width:8px;
         
         button{
-          font-size:25px;
+          font-size:20px;
           margin-right:10px;
           margin-left:10px;
         }
@@ -214,7 +218,7 @@ body{
         input{
           text-align:center;
           font-size:30px;
-          height:35px;
+          height:40px;
           width:70%;
         }
         button{
