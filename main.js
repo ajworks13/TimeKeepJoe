@@ -207,9 +207,10 @@ let start = document.querySelector(".start").onclick = function(){
       reps += 1;
       console.log("reps: ", reps);
       console.log("sets: ", sets);
-      if(intTimerSecValue){
+      if(intTimerSecValue || intTimerMinValue){
         // the minus value has to one 1 less under the default value to go back to the user input value.
         // When the program is done, the Seconds is 31 and the minus value is 30.
+        theMinutes += intTimerMinValue;
         theSeconds += (intTimerSecValue - 2);
       }
       // default value + 1
@@ -250,6 +251,7 @@ let start = document.querySelector(".start").onclick = function(){
 // startOver BUTTON
 let startOver = document.querySelector(".startOver").onclick = function(){
   // here we reset the timer, pause is not active, 
+  theMinutes = 0;
   theSeconds = 6;
   theNumbers = document.querySelector(".theNumbers").innerHTML = `${theMinutes}:${theSeconds}`;
   blockRepsAndSets.style.display = "none";
