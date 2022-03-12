@@ -12,7 +12,8 @@ NOTES:
   [c] when clicking on sets, add another question to see id the user wants to reset reps per sets.
   add a settings menu > within so far add the ability to change between light and dark mode.
   [c] Disable reps and sets button when counting.
-  When set timer is open, click outside disables blur but pop up wont go away/
+  When set timer is open, click outside disables blur but pop up wont go away.
+  Make it so that what ever the set timer is, becomes the default time to reset to.
   
   
 */
@@ -21,6 +22,7 @@ let theMinutes: number = 0
 let theSeconds: number = 3;
 let reps: number = 0;
 let sets: number = 0;
+let theTimerMinValue, theTimerSecValue, intTimerMinValue, intTimerSecValue;
 
 // the blur that comes up behind the sets pop up
 let theBlur = document.createElement("div");
@@ -178,9 +180,9 @@ let start = document.querySelector(".start").onclick = function(){
       
       if(theSeconds == 0 && theMinutes >= 1){
         console.log("heiorhiworhie");
-        theSeconds = 59;
+        theSeconds = 60;
         theMinutes -= 1;
-        theSeconds--;
+        //theSeconds--;
       }
       // LEFT OFF HERE trying to figure out how to make the minutes and seconds count down together.
       
@@ -205,7 +207,14 @@ let start = document.querySelector(".start").onclick = function(){
       reps += 1;
       console.log("reps: ", reps);
       console.log("sets: ", sets);
-      theSeconds += 5;
+      if(intTimerSecValue){
+        // the minus value has to one 1 less under the default value to go back to the user input value.
+        // When the program is done, the Seconds is 31 and the minus value is 30.
+        theSeconds += (intTimerSecValue - 2);
+      }
+      // default value + 1
+      //theSeconds += 31;
+      theSeconds += 3;
       document.querySelector(".theReps").innerHTML = `Reps: ${reps}`;
       
       
@@ -274,7 +283,7 @@ let setTimer = document.querySelector(".set").onclick = function(){
   let timerMinInput = document.querySelector(".timerMinInput");
   let timerSecInput = document.querySelector(".timerSecInput");
   let setClock = document.querySelector(".setClock");
-  let theTimerMinValue, theTimerSecValue, intTimerMinValue, intTimerSecValue;
+ // let theTimerMinValue, theTimerSecValue, intTimerMinValue, intTimerSecValue;
   cancel.onclick = function(){
     theSetWindow.style.display = "none";
     theBlur.style.display = "none";
