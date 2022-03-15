@@ -1,7 +1,7 @@
 /*
 NOTES:
-  Improve Sets button.
-  Add functionality to Set Timer.
+  [c] Improve Sets button.
+  [c] Add functionality to Set Timer.
   [c] Add functionality to Pause.
   [c] Add functionality to Start Over.
   [c] Make Mobile friendly.
@@ -12,8 +12,8 @@ NOTES:
   [c] when clicking on sets, add another question to see id the user wants to reset reps per sets.
   add a settings menu > within so far add the ability to change between light and dark mode.
   [c] Disable reps and sets button when counting.
-  When set timer is open, click outside disables blur but pop up wont go away.
-  Make it so that what ever the set timer is, becomes the default time to reset to.
+  [c] When set timer is open, click outside disables blur but pop up wont go away.
+  [c] Make it so that what ever the set timer is, becomes the default time to reset to.
   
   
 */
@@ -56,7 +56,10 @@ userInput.style.fontSize = "20px";
 userInput.style.color = "white";
 userInput.style.backgroundColor = "#4e0000";
 
-
+// Limiting character inputs.
+document.getElementById("setInputID").setAttribute("maxlength","2");
+let timerSecInputID = document.getElementById("timerSecInputID").setAttribute("maxlength","2");
+let timerMinInputID = document.getElementById("timerMinInputID").setAttribute("maxlength","2");
 
 // this displays the min and secs
 let theNumbers = document.querySelector(".theNumbers").innerHTML = `${theMinutes}:${theSeconds}`;
@@ -290,6 +293,11 @@ let setTimer = document.querySelector(".set").onclick = function(){
     theSetWindow.style.display = "none";
     theBlur.style.display = "none";
   }
+  // removes the pop up and background blur
+  theBlur.onclick = function(){
+    theSetWindow.style.display = "none";
+    theBlur.style.display = "none";
+  }
   
   timerMinInput.addEventListener('change', (e) => {  
     console.log(e.target.value);
@@ -317,6 +325,14 @@ let setTimer = document.querySelector(".set").onclick = function(){
     theBlur.style.display = "none";
   }
   
+}
+// enables only Numeric inputs.
+function isNumberKey(evt){
+  var charCode = (evt.which) ? evt.which : event.keyCode
+  if (charCode > 31 && (charCode < 48 || charCode > 57))
+    return false;
+
+  return true;
 }
 
 
