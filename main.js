@@ -1,7 +1,7 @@
 /*
 NOTES:
-  [c] Improve Sets button.
-  [c] Add functionality to Set Timer.
+  Improve Sets button.
+  Add functionality to Set Timer.
   [c] Add functionality to Pause.
   [c] Add functionality to Start Over.
   [c] Make Mobile friendly.
@@ -12,14 +12,14 @@ NOTES:
   [c] when clicking on sets, add another question to see id the user wants to reset reps per sets.
   add a settings menu > within so far add the ability to change between light and dark mode.
   [c] Disable reps and sets button when counting.
-  [c] When set timer is open, click outside disables blur but pop up wont go away.
-  [c] Make it so that what ever the set timer is, becomes the default time to reset to.
+  When set timer is open, click outside disables blur but pop up wont go away.
+  Make it so that what ever the set timer is, becomes the default time to reset to.
   
   
 */
 
 let theMinutes: number = 0
-let theSeconds: number = 3;
+let theSeconds: number = 30;
 let reps: number = 0;
 let sets: number = 0;
 let theTimerMinValue, theTimerSecValue, intTimerMinValue, intTimerSecValue;
@@ -255,7 +255,7 @@ let start = document.querySelector(".start").onclick = function(){
 let startOver = document.querySelector(".startOver").onclick = function(){
   // here we reset the timer, pause is not active, 
   theMinutes = 0;
-  theSeconds = 6;
+  theSeconds = 30;
   theNumbers = document.querySelector(".theNumbers").innerHTML = `${theMinutes}:${theSeconds}`;
   blockRepsAndSets.style.display = "none";
   // intValue = 0;
@@ -312,6 +312,12 @@ let setTimer = document.querySelector(".set").onclick = function(){
     timerSecInput = e.target.value;
     intTimerSecValue = parseInt(timerSecInput);
     console.log("this is timer value:", intTimerSecValue);
+    // disables the seconds from exceeding over 60. So countdown cant be starting from for Ex. 1:83.
+    if(intTimerSecValue > 60){
+      theSeconds = 60;
+      intTimerSecValue = 60;
+      console.log("here");
+    }
     theSeconds = intTimerSecValue;
     
   });
