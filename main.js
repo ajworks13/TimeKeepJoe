@@ -1,7 +1,7 @@
 /*
 NOTES:
-  Improve Sets button.
-  Add functionality to Set Timer.
+  [c] Improve Sets button.
+  [c] Add functionality to Set Timer.
   [c] Add functionality to Pause.
   [c] Add functionality to Start Over.
   [c] Make Mobile friendly.
@@ -12,8 +12,8 @@ NOTES:
   [c] when clicking on sets, add another question to see id the user wants to reset reps per sets.
   add a settings menu > within so far add the ability to change between light and dark mode.
   [c] Disable reps and sets button when counting.
-  When set timer is open, click outside disables blur but pop up wont go away.
-  Make it so that what ever the set timer is, becomes the default time to reset to.
+  [c] When set timer is open, click outside disables blur but pop up wont go away.
+  [c] Make it so that what ever the set timer is, becomes the default time to reset to.
   
   
 */
@@ -288,6 +288,9 @@ let setTimer = document.querySelector(".set").onclick = function(){
   let timerMinInput = document.querySelector(".timerMinInput");
   let timerSecInput = document.querySelector(".timerSecInput");
   let setClock = document.querySelector(".setClock");
+  
+
+  
  // let theTimerMinValue, theTimerSecValue, intTimerMinValue, intTimerSecValue;
   cancel.onclick = function(){
     theSetWindow.style.display = "none";
@@ -317,6 +320,11 @@ let setTimer = document.querySelector(".set").onclick = function(){
       theSeconds = 60;
       intTimerSecValue = 60;
       console.log("here");
+    }
+    // disables users to add 0 min and 0 secs.
+    if(intTimerMinValue <= 0 && intTimerSecValue <= 0){
+      intTimerMinValue = 0;
+      intTimerSecValue = 30;
     }
     theSeconds = intTimerSecValue;
     
