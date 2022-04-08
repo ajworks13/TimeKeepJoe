@@ -279,10 +279,18 @@ let startOver = document.querySelector(".startOver").onclick = function(){
 
 
 let theSetWindow = document.querySelector(".theSetWindow");
+let exitBtn = document.querySelector(".exitBtn");
 // set time BUTTON
 let setTimer = document.querySelector(".set").onclick = function(){
   theSetWindow.style.display = "block";
   theBlur.style.display = "block";
+  exitBtn.style.display = "block";
+  
+  exitBtn.onclick = function(){
+    theSetWindow.style.display = "none";
+    theBlur.style.display = "none";
+    exitBtn.style.display = "none";
+  }
   
   let cancel = document.querySelector(".cancel");
   let timerMinInput = document.querySelector(".timerMinInput");
