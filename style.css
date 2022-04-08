@@ -102,6 +102,8 @@
         border-right-style: none;
         box-shadow:0px 0px 0px 0px;
         transition:0.3s;
+        
+        
       }
       .theSets:hover{
         background:#2b4f61;
@@ -317,10 +319,13 @@
         border-right-style: none;
         box-shadow:0px 0px 0px 0px;
         transition:0.3s;
+        
+        
       }
       .theSets:hover{
         background:#2b4f61;
       }
+      
       .setsPopUp{
         @extend .repsQuestion;
         //display:block;
@@ -360,6 +365,20 @@
       margin-left:auto;
       margin-top:150px;
       text-align:center;
+      
+      .exitBtn{
+        display:none;
+        z-index:6;
+        height:20px;
+        width:20px;
+        margin-top:-30px;
+        float:right;
+        border:1px solid cyan;
+        font-size:16px;
+        background:black;
+        color:white;
+        font-family: "Times New Roman", Times, serif;
+      }
       
       input{
         text-align:center;
