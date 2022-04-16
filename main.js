@@ -14,7 +14,7 @@ NOTES:
   [c] Disable reps and sets button when counting.
   [c] When set timer is open, click outside disables blur but pop up wont go away.
   [c] Make it so that what ever the set timer is, becomes the default time to reset to.
-  
+  [ ] if mins has a number above 0 and seconds is empty, either make it required to enter a digit or auto fill to 00.
   
 */
 
@@ -328,6 +328,12 @@ let setTimer = document.querySelector(".set").onclick = function(){
       theSeconds = 60;
       intTimerSecValue = 60;
       console.log("here");
+    }
+    
+    
+    if(intTimerMinValue > 0 && intTimerSecValue == 0){
+      //alert("hi");
+      intTimerSecValue = 60;
     }
     // disables users to add 0 min and 0 secs.
     if(intTimerMinValue <= 0 && intTimerSecValue <= 0){
